@@ -1,11 +1,12 @@
 from models.user import UserModel
+from app import mysql
 
 
 class UserRepository():
 
     @staticmethod
     def find_by_username(username):
-        connection = mysql.connect()
+        connection = mysql.get_db()
         cursor = connection.cursor()
         query = "SELECT * FROM users WHERE username=?"
         result = cursor.execute(query, (username,))
@@ -20,7 +21,7 @@ class UserRepository():
 
     @staticmethod
     def find_by_id(_id):
-        connection = mysql.connect()
+        connection = mysql.get_db()
         cursor = connection.cursor()
         query = "SELECT * FROM users WHERE id=?"
         result = cursor.execute(query, (_id,))
@@ -35,7 +36,7 @@ class UserRepository():
 
     @staticmethod
     def save_to_db(username, password):
-        connection = mysql.connect()
+        connection = mysql.get_db()
         cursor = connection.cursor()
         query = "INSERT INTO users(username, password) VALUES (?, ?)"
         cursor.execute(query, (username, password))
