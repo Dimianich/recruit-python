@@ -5,18 +5,6 @@ from flask_cors import CORS
 from flaskext.mysql import MySQL
 from redis import Redis
 
-from resources.data import (
-    DataDB,
-    DataRedis,
-    DataLog
-)
-from resources.user import (
-    UserRegistration,
-    UserLogin
-)
-
-import init_db
-
 app = Flask(__name__)
 
 redis = Redis(host='redis', port=6379)
@@ -34,13 +22,23 @@ def add_claims_to_jwt(identity):
         return {"is_admin": True}
     return {"is_admin": False}
 
-
+from resources.data import (
+    DataDB,
+    DataRedis,
+    DataLog
+)
+from resources.user import (
+    UserRegistration,
+    UserLogin
+)
 api.add_resource(UserRegistration, '/registration')
 api.add_resource(UserLogin, '/login')
 api.add_resource(DataDB, '/db')
 api.add_resource(DataRedis, '/redis')
 api.add_resource(DataLog, '/log')
 
+
+import init_db
 
 @app.before_first_request
 def create_table():
