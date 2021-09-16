@@ -38,7 +38,7 @@ export default {
   methods: {
     async getDataDb() {
       try {
-        let response = await fetch("backend/db", {
+        let response = await fetch("http://backend/db", {
           method: "GET",
           headers: {
             Authorization: "Bearer " + localStorage.getItem("user"),
