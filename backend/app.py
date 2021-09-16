@@ -18,7 +18,6 @@ from resources.user import (
 import init_db
 
 app = Flask(__name__)
-app.config.from_pyfile('settings.cfg', silent=True)
 
 redis = Redis(host='redis', port=6379)
 jwt = JWTManager(app)
@@ -27,6 +26,7 @@ CORS(app)
 mysql = MySQL()
 mysql.init_app(app)
 
+app.config.from_pyfile('settings.cfg', silent=True)
 
 @jwt.additional_claims_loader
 def add_claims_to_jwt(identity):
