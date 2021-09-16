@@ -58,7 +58,7 @@ export default {
       }
 
       try {
-        let response = await fetch("backend/registration", {
+        let response = await fetch("http://backend/registration", {
           method: "POST",
           headers: {
             "Content-Type": "application/json;charset=utf-8",
