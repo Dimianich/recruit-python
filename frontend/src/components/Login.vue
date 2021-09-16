@@ -40,7 +40,7 @@ export default {
         return false;
       }
       try {
-        let response = await fetch("backend/login", {
+        let response = await fetch("http://backend/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json;charset=utf-8",
