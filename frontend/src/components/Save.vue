@@ -47,7 +47,7 @@ export default {
       }
 
       try {
-        let response = await fetch("backend/db", {
+        let response = await fetch("http://backend/db", {
           method: "POST",
           headers: {
             "Content-Type": "application/json;charset=utf-8",
@@ -85,7 +85,7 @@ export default {
       }
 
       try {
-        let response = await fetch("backend/redis", {
+        let response = await fetch("http://backend/redis", {
           method: "POST",
           headers: {
             "Content-Type": "application/json;charset=utf-8",
