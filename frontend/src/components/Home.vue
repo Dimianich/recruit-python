@@ -61,7 +61,7 @@ export default {
     },
     async getDataRedis() {
       try {
-        let response = await fetch("backend/redis", {
+        let response = await fetch("http://backend/redis", {
           method: "GET",
           headers: {
             Authorization: "Bearer " + localStorage.getItem("user"),
@@ -84,7 +84,7 @@ export default {
     },
     async getDataLog() {
       try {
-        let response = await fetch("backend/log", {
+        let response = await fetch("http://backend/log", {
           method: "GET",
           headers: {
             Authorization: "Bearer " + localStorage.getItem("user"),
