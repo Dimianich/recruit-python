@@ -1,10 +1,11 @@
 from repositories.abstract_data_repository import AbstractDataRepository
+from app import mysql
 
 
 class DbRepository(AbstractDataRepository):
 
     def get_all(self):
-        connection = mysql.connect()
+        connection = mysql.get_db()
         cursor = connection.cursor()
         query = "SELECT * FROM data"
         result = cursor.execute(query)
@@ -16,7 +17,7 @@ class DbRepository(AbstractDataRepository):
         return data
 
     def save_data(self, info):
-        connection = mysql.connect()
+        connection = mysql.get_db()
         cursor = connection.cursor()
         query = "INSERT INTO data VALUES(?)"
         cursor.execute(query, (info,))
