@@ -2,7 +2,7 @@ from app import mysql
 
 
 def create_tables():
-    connection = mysql.connect()
+    connection = mysql.get_db()
     cursor = connection.cursor()
     query = "CREATE TABLE IF NOT EXISTS users (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255) NOT NULL, password TEXT(1000) NOT NULL)"
     cursor.execute(query)
