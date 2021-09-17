@@ -6,4 +6,4 @@ RUN npm install
 COPY . .
 RUN npm run build
 EXPOSE 8080
-CMD [ "http-server", "dist" ]
+CMD [ "http-server", "dist", "--proxy http://backend:5000?" ]
